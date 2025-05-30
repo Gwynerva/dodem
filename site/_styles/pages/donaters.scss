@@ -1,0 +1,199 @@
+@use 'defs/color';
+@use 'defs/size';
+@use 'defs/breakpoint' as bp;
+
+@use 'partials/block';
+@use 'partials/hover';
+@use 'partials/util';
+@use 'partials/content';
+
+.donateBlock
+{
+    @extend %block, %blockSection;
+
+    display: flex;
+    align-items: center;
+    gap: size.$gap;
+
+    @include color.themeColorVar('_donateBg', #FFF8F0, #282217);
+    background: var(--c__donateBg);
+
+    @include color.themeColorVar(_donateBorder, #FFD3A0, #3C2D00);
+    border-color: var(--c__donateBorder);
+
+    @include bp.max(mini)
+    {
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .info
+    {
+        flex: 1;
+
+        h2
+        {
+            font-size: 115%;
+            margin-bottom: 5px;
+        }
+
+        .desc
+        {
+            font-size: 95%;
+        }
+    }
+
+    .donateButton
+    {
+        padding: size.$gapSmall size.$gap;
+        background: #E69600;
+        border-radius: size.$borderRadius;
+        
+        color: white;
+        font-weight: bold;
+        letter-spacing: .5px;
+        text-transform: uppercase;
+        text-decoration: none;
+
+        @include util.transition(background-color);
+
+        &:hover
+        {
+            background-color: #CD8500;
+        }
+    }
+}
+
+main > .helpers,
+main > .teammates
+{
+    @extend %block;
+
+    > header
+    {
+        @extend %blockHeader;
+        h2 { font-size: 115%; }
+    }
+}
+
+main > .helpers > .list
+{
+    @extend %blockSection;
+    border-top: 1px solid var(--c_border);
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: size.$gapSmall;
+
+    .helper
+    {
+        color: var(--c_text);
+        @extend %underline;
+
+        &:not(:last-of-type)::after
+        {
+            content: ",";
+            color: var(--c_text-shade-1);
+        }
+    }
+}
+
+main > .teammates > .list
+{
+    @extend %blockSection;
+    border-top: 1px solid var(--c_border);
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: size.$gapSmall;
+
+    .teammate
+    {
+        display: flex;
+        align-items: center;
+
+        color: var(--c_text);
+        @extend %underline;
+
+        .avatar
+        {
+            @include util.flexCC;
+            margin-right: 7px;
+
+            &, img
+            {
+                @include util.size(35px);
+                border-radius: 50%;
+            }
+
+            &.noAvatar
+            {
+                @include block.blockTypeGradient(solution);
+                color: white;
+                
+                i { font-size: 15px; }
+            }
+        }
+
+        &:not(:last-of-type)::after
+        {
+            content: ",";
+            color: var(--c_text-shade-1);
+        }
+    }
+}
+
+main > .patron
+{
+    @extend %block;
+
+    > header
+    {
+        @extend %blockHeader, %blockActions;
+
+        .avatar
+        {
+            @include util.flexCC;
+
+            &, img
+            {
+                @include util.size(60px);
+                border-radius: 50%;
+            }
+
+            &.noAvatar
+            {
+                @include block.blockTypeGradient(solution);
+                
+                i
+                {
+                    color: white;
+                    font-size: 22px;
+                }
+            }
+        }
+
+        .info
+        {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: size.$gapSmall;
+
+            @include bp.max(mini) { text-align: center; }
+
+            .name
+            {
+                font-weight: bold;
+                font-size: 115%;
+            }
+
+            .slogan
+            {
+                color: var(--c_text-shade-1);
+            }
+        }
+    }
+
+    > .about { @extend %blockPane, %CONTENT; }
+}

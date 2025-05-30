@@ -1,0 +1,198 @@
+@use 'defs/size';
+@use 'defs/breakpoint' as bp;
+
+@use 'partials/block';
+@use 'partials/util';
+@use 'partials/hover';
+
+.progress
+{
+    @extend %block, %blockSection;
+
+    display: flex;
+    flex-direction: column;
+    gap: size.$gap;
+
+    header
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 1;
+
+        h2
+        {
+            font-size: 120%;
+        }
+
+        .lastUpdate
+        {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            font-size: 90%;
+            color: var(--c_text-shade-1);
+            @include hover.colorAccent(var(--c_text));
+        }
+
+        @include bp.max(mini)
+        {
+            flex-direction: column;
+            gap: size.$gapSmall;
+        }
+    }
+
+    .progressBar
+    {
+        @include util.size(100%, 20px);
+        border-radius: size.$borderRadius;
+
+        display: flex;
+        align-items: center;
+
+        div
+        {
+            height: 20px;
+            border: 1px solid var(--c_brand-dark);
+            background: var(--c_brand);
+            opacity: .75;
+
+            background-image: linear-gradient(
+                -45deg,
+                rgba(255, 255, 255, 0.2) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0.2) 75%,
+                transparent 75%,
+                transparent
+            );
+
+            &:nth-of-type(odd) { cursor: help; }
+
+            &:nth-of-type(even)
+            {
+                height: 17px;
+                border-color: var(--c_border);
+                background: var(--c_bg-shade-2);
+            }
+
+            &:first-of-type
+            {
+                border-top-left-radius: size.$borderRadius;
+                border-bottom-left-radius: size.$borderRadius;
+            }
+
+            &:last-of-type
+            {
+                border-top-right-radius: size.$borderRadius;
+                border-bottom-right-radius: size.$borderRadius;
+            }
+        }
+    }
+}
+
+.theory,
+.practice,
+.open
+{
+    @extend %block;
+
+    %actionButton
+    {
+        @include util.flexCC;
+        gap: size.$gapSmall;
+
+        padding: size.$gapSmall size.$gap;
+        color: white;
+        text-decoration: none;
+        background-color: var(--c_brand-dark);
+        border-radius: size.$borderRadius;
+
+        @include util.transition(background-color);
+
+        &:hover
+        {
+            background-color: var(--c_brand);
+        }
+    }
+
+    header
+    {
+        @extend %blockSection;
+
+        display: flex;
+        align-items: center;
+        gap: size.$gap;
+
+        .figure
+        {
+            @include util.size(50px);
+            @include util.flexCC;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+            background: radial-gradient(var(--c_brand), var(--c_brand-dark));
+
+            i
+            {
+                color: white;
+                font-size: 20px;
+            }
+        }
+
+        .info
+        {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+
+            h2
+            {
+                font-size: 120%;
+                a { @extend %underline; }   
+            }
+            
+            span
+            {
+                font-size: 95%;
+                color: var(--c_text-shade-1);
+            }
+        }
+
+        > a
+        {
+            @extend %actionButton;
+            width: 140px;
+            @include bp.max(mini) { display: none; }
+        }
+    }
+
+    .content
+    {
+        @extend %blockSection;
+        border-top: 1px solid var(--c_border);
+
+        display: flex;
+        flex-direction: column;
+        gap: size.$gap;
+
+        @include bp.max(mini) { font-size: 95%; }
+
+        > .button
+        {
+            display: none;
+            justify-content: center;
+
+            @include bp.max(mini) { display: flex; }
+
+            a
+            {
+                @extend %actionButton;
+                width: 200px;
+            }
+        }
+    }
+}

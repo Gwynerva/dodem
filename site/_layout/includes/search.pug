@@ -1,0 +1,41 @@
+.searchContainer
+    .inputContainer
+        input(type="text", placeholder="Запрос или номер задачи...", autocomplete="off")
+        .resultSwitcher
+            .taskResults
+                i.fas.fa-hashtag
+            .bookResults
+                i.fas.fa-book
+
+    .resultPanes
+
+        .pane.pane--loading
+            img(src="/site/graphics/loading.svg")
+
+        .pane.pane--error
+            i.far.fa-sad-cry
+            .message
+                .title Ничего не нашлось!
+                div Попробуйте переформулировать запрос.
+                div Вы можете <a href="https://bydef.ru" target="_blank">предложить</a> добавить решение/материал.
+
+        .pane.pane--task
+            .scrollContainer
+                .location
+                    i.fas.fa-map-signs
+                    span Свойства подпоследовательностей
+                .taskContent
+                    p Содержимое задачи.
+
+            a.goto(href="")
+                span К решению
+                i.fas.fa-arrow-right
+
+        .pane.pane--results
+            .bookResults
+                //- Результаты поиска по справочнику
+
+            .sep
+            .taskResults
+                .scrollContainer
+                    //- Результаты поиска по задачам

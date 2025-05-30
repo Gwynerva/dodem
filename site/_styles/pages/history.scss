@@ -1,0 +1,100 @@
+@use 'defs/size';
+@use 'defs/breakpoint' as bp;
+
+@use 'partials/block';
+@use 'partials/util';
+@use 'partials/content';
+
+main > .historyBlock
+{
+    @extend %block;
+
+    > header
+    {
+        @extend %blockHeader, %blockActions;
+
+        @include bp.max(mini)
+        {
+            flex-direction: row;
+        }
+
+        > .info
+        {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: size.$gapSmall;
+
+            .title
+            {
+                font-size: 115%;
+                font-weight: bold;
+
+                .num
+                {
+                    margin-right: size.$gapSmall;
+                    color: var(--c_text-shade-1);
+                }
+            }
+
+            .stats
+            {
+                display: flex;
+                align-items: center;
+                gap: size.$gap;
+
+                color: var(--c_text-shade-1);
+
+                .task, .book
+                {
+                    display: flex;
+                    gap: size.$gapSmall;
+
+                    i
+                    {
+                        display: none;
+                        @include bp.max(mini) { display: block; }
+                    }
+
+                    span:first-of-type { @include bp.max(mini) { display: none; } }
+
+                    .add    { color: #3BB412; }
+                    .edit   { color: #BE8E13; }
+
+                    .add + .edit { margin-left: 0; }
+
+                    .add::before, .edit::before { margin-right: 1px; }
+                    .add::before     { content: '+'; }
+                    .edit::before    { content: '±'; }
+                }
+            }
+        }
+    }
+
+    > .content
+    {
+        @extend %blockSection;
+        border-top: 1px solid var(--c_border);
+
+        &:not(._active) { display: none; }
+
+        .pane
+        {
+            &--loading
+            {
+                @include util.flexCC;
+
+                img
+                {
+                    display: block;
+                    width: 200px;
+                    filter: brightness(.5);
+
+                    @include bp.max(mini) { width: 150px; }
+                }
+            }
+        }
+    }
+
+    &._itemLoaded > .content { @extend %CONTENT; }
+}

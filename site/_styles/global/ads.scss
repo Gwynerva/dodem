@@ -1,0 +1,16 @@
+@use 'defs/size';
+@use 'defs/color';
+@use 'defs/breakpoint' as bp;
+
+@use 'partials/block';
+
+.darkMagic
+{
+    overflow: hidden;
+    @extend %blockLogic;
+
+    @include bp.max(stretch)    { width: calc(100% - 2 * #{size.$gap}); }
+    @include bp.max(mini)       { width: 100%; margin: 0; }
+
+    &:not(._hasAds) { margin: -1 * size.$gapStruct / 2 auto; }
+}

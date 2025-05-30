@@ -1,0 +1,190 @@
+@use 'defs/size';
+@use 'defs/misc';
+@use 'defs/breakpoint' as bp;
+
+@use 'partials/task';
+@use 'partials/block';
+@use 'partials/book';
+@use 'partials/util';
+@use 'partials/content';
+@use 'partials/hover';
+
+main >
+{
+    .task, .solution
+    {
+        @extend %block;
+
+        > header
+        {
+            @extend %blockHeader, %blockActions;
+            .attrs { @extend %blockAttrs; }
+        }
+
+        [data-pane] { @extend %blockPane; }
+    }
+}
+
+main > .task
+{
+    > header
+    {
+        border-bottom: 1px solid var(--c_border);
+
+        .typeCircle
+        {
+            @include block.blockTypeContainer(task)
+            {
+                color: white;
+                i { font-size: 22px; }
+            }
+        }
+
+        .taskInfo
+        {
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+            gap: size.$gapSmall;
+
+            @include bp.max(mini) { align-items: center; }
+
+            .title
+            {
+                font-size: 110%;
+                font-weight: bold;
+            }
+
+            .attrs .attr.difficulty { @include task.difficultyColors; }
+        }
+    }
+
+    > .groupTask
+    {
+        @extend %blockSection, %CONTENT;
+
+        cursor: help;
+        color: var(--c_text-shade-1);
+        border-bottom: 1px dashed var(--c_border);
+
+        @include util.transition(color);
+
+        &:hover { color: var(--c_text); }
+    }
+
+    > .taskContent
+    {
+        @extend %blockSection, %CONTENT;
+    }
+
+    > .hint, > .answer, > .note
+    {
+        .content { @extend %CONTENT; }
+    }
+}
+
+main > .solution
+{
+    > header
+    {
+        img.typeCircle { @extend %blockType; }
+
+        :not(img).typeCircle
+        {
+            @include block.blockTypeContainer(solution)
+            {
+                color: white;
+                i { font-size: 22px; }
+            }
+        }
+
+        .solutionInfo
+        {
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+            gap: size.$gapSmall;
+
+            @include bp.max(mini) { align-items: center; }
+
+            .main
+            {
+                display: flex;
+
+                font-size: 110%;
+                font-weight: bold;
+
+                .order
+                {
+                    cursor: help;
+                    color: var(--c_text-shade-1);
+                    margin-right: size.$gapSmall;
+                }
+
+                a.solver { @extend %underline; }
+            }
+        }
+    }
+
+    > .hint, > .solution
+    {
+        .content { @extend %CONTENT; }
+    }
+
+    > .dependencies > .list
+    {
+        .task
+        {
+            @extend %bookRef;
+
+            .type { @include block.blockTypeGradient('task'); }
+            .label { color: var(--c_text); }
+        }
+
+        .bookRef { @extend %bookRef; }
+    }
+}
+
+.taskNav
+{
+    @extend %blockLogic;
+
+    display: flex;
+    justify-content: space-between;
+
+    .previous, .next
+    {
+        @extend %blockDeco;
+
+        @include util.flexCC;  
+        gap: size.$gapSmall;
+
+        width: 100px;
+        padding: size.$gap;
+        
+        color: var(--c_text-shade-1);
+        @include hover.colorAccent(var(--c_text));
+
+        i { font-size: 120%; }
+    }
+
+    @include bp.max(mini)
+    {
+        .next
+        {
+            border-left: 1px solid var(--c_border);
+            border-top-left-radius: size.$borderRadius;
+            border-bottom-left-radius: size.$borderRadius;
+        }
+
+        .previous
+        {
+            border-right: 1px solid var(--c_border);
+            border-top-right-radius: size.$borderRadius;
+            border-bottom-right-radius: size.$borderRadius;
+        }
+
+    }   
+}

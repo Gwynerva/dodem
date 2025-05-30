@@ -1,0 +1,53 @@
+mixin preloadFont(fontPath)
+    link(
+        rel="preload",
+        href=`/site/fonts/${fontPath}`,
+        as="font",
+        type="font/ttf",
+        crossorigin="anonymous"
+    )
+
+mixin style(stylePath)
+    link(
+        rel="stylesheet"
+        href=`/site/styles/${stylePath}`
+    )
+
+mixin script(scriptPath)
+    script(src=`/site/scripts/${scriptPath}`)
+
+//-
+//-
+//-
+
+mixin bookPageLink(bookPage)
+    a.bookRef(href=bookPage.getLink())
+        .type(class='type--' + bookPage.type.className)
+            span= bookPage.type.letter
+        .info
+            .title= bookPage.title
+            
+            if (bookPage.desc)
+                .desc!= bookPage.desc
+
+mixin adsBefore
+    .darkMagic.
+        <!-- Yandex.RTB R-A-1793762-1 -->
+        <div id="yandex_rtb_R-A-1793762-1"></div>
+        <script>window.yaContextCb.push(()=>{
+        Ya.Context.AdvManager.render({
+            renderTo: 'yandex_rtb_R-A-1793762-1',
+            blockId: 'R-A-1793762-1'
+        })
+        })</script>
+
+mixin adsAfter
+    .darkMagic.
+        <!-- Yandex.RTB R-A-1793762-2 -->
+        <div id="yandex_rtb_R-A-1793762-2"></div>
+        <script>window.yaContextCb.push(()=>{
+        Ya.Context.AdvManager.render({
+            renderTo: 'yandex_rtb_R-A-1793762-2',
+            blockId: 'R-A-1793762-2'
+        })
+        })</script>

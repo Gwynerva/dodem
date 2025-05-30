@@ -1,0 +1,7 @@
+.spoiler
+    header(title="Раскрыть пояснение")
+        .title!= title
+        .switcher
+            i.fas.fa-eye.fa-fw.on
+            i.fas.fa-eye-slash.fa-fw.off
+    .content!= content

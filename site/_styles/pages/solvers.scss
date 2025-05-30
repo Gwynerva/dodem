@@ -1,0 +1,137 @@
+@use 'defs/size';
+@use 'defs/breakpoint' as bp;
+
+@use 'partials/block';
+@use 'partials/util';
+@use 'partials/hover';
+@use 'partials/content';
+
+main > .solver
+{
+    @extend %block;
+
+    > header
+    {
+        @extend %blockHeader, %blockActions;
+
+        .typeCircle
+        {
+            &:not(.hasAvatar)
+            {
+                @include block.blockTypeContainer(solution)
+                {
+                    color: white;
+                    i { font-size: 22px; }
+                }
+            }
+
+            &.hasAvatar
+            {
+                @extend %blockType;
+
+                img
+                {
+                    @include util.size(60px);
+                    border-radius: 50%;
+                }
+            }
+
+            @include util.size(60px !important);
+        }
+
+        .info
+        {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: size.$gapSmall;
+
+            @include bp.max(mini) { text-align: center; }
+
+            .name
+            {
+                font-weight: bold;
+                font-size: 115%;
+            }
+
+            .slogan
+            {
+                color: var(--c_text-shade-1);
+            }
+        }
+    }
+
+    > .bio
+    {
+        @extend %blockPane;
+        .content { @extend %CONTENT; }
+    }
+
+    > .tasks
+    {
+        display: flex;
+        align-items: stretch;
+
+        border-top: 1px solid var(--c_border);
+        background: var(--c_bg-shade-1);
+
+        line-height: 1;
+
+        .total, .listContainer
+        {
+            padding: size.$gapSmall;
+        }
+
+        .total
+        {
+            display: flex;
+            align-items: center;
+
+            font-weight: bold;
+            color: var(--c_text-shade-1);
+
+            cursor: help;
+            border-right: 1px solid var(--c_border);
+
+            i { margin-right: 5px; }
+        }
+
+        .listContainer
+        {
+            overflow-x: auto;
+
+            &::-webkit-scrollbar
+            {
+                height: 4px;
+            }
+
+            &::-webkit-scrollbar-thumb
+            {
+                background: var(--c_bg-shade-4);
+            }
+
+            .list
+            {
+                flex: 1;
+                display: flex;
+                gap: size.$gapSmall;
+
+                .task
+                {
+                    @include util.flexCC;
+                    flex-shrink: 0;
+
+                    font-size: 90%;
+                    color: var(--c_text-shade-1);
+                    @include hover.colorAccent(var(--c_text));
+
+                    padding: 5px 0;
+                    width: 70px;
+                    border: 1px solid var(--c_border);
+                    border-radius: size.$borderRadius;
+                    background: var(--c_bg);
+                }
+            }
+        }
+    }
+}
