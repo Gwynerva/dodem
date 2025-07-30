@@ -124,7 +124,7 @@ html(lang="ru")
                     header
                         img(src="/site/graphics/omath.svg")
                         .info
-                            p Откройте <strong>"Открытую Математику"!</strong>
+                            p <strong>Открытая Математика — преемник Демидовича!</strong>
                             p Понятная теория, конспекты и задачник в одном флаконе!
                         a.goto(href="https://omath.ru")
                             span Заглянуть
@@ -133,24 +133,24 @@ html(lang="ru")
 
                     script.
                         let hotTopics = [
-                            ['Рациональные числа', 'https://omath.ru/article/basics/fractions/rational/'],
+                            ['Рациональные числа',      'https://omath.ru/article/basics/fractions/rational/'],
                         ];
 
                         let topics = [
-                            ['Элементарные уравнения', 'https://omath.ru/article/basics/equations/elementary/'],
-                            ['Квадратные уравнения', 'https://omath.ru/article/basics/equations/quadratic/'],
-                            ['Что такое дробь?', 'https://omath.ru/article/basics/fractions/definition/'],
-                            ['Суммы степеней чисел', 'https://omath.ru/article/applications/sum-of-powers/'],
-                            ['Формулы комбинаторики', 'https://omath.ru/article/combinatorics/formulas/'],
-                            ['Сочетания',           'https://omath.ru/article/combinatorics/combination/'],
-                            ['Перестановки',        'https://omath.ru/article/combinatorics/permutation/'],
-                            ['Размещения',          'https://omath.ru/article/combinatorics/arrangement/'],
-                            ['Факториал',           'https://omath.ru/article/combinatorics/factorial/'],
-                            ['Правило умножения',   'https://omath.ru/article/combinatorics/rules/product/'],
-                            ['Правило сложения',    'https://omath.ru/article/combinatorics/rules/sum/'],
-                            ['Прямой перебор',      'https://omath.ru/article/combinatorics/brute-force/'],
-                            ['Комбинаторика',       'https://omath.ru/article/combinatorics/preface/'],
-                            ['Бином Ньютона',       'https://omath.ru/article/combinatorics/binomial-theorem/'],
+                            ['Элементарные уравнения',  'https://omath.ru/article/basics/equations/elementary/'],
+                            ['Квадратные уравнения',    'https://omath.ru/article/basics/equations/quadratic/'],
+                            ['Что такое дробь?',        'https://omath.ru/article/basics/fractions/definition/'],
+                            ['Суммы степеней чисел',    'https://omath.ru/article/applications/sum-of-powers/'],
+                            ['Формулы комбинаторики',   'https://omath.ru/article/combinatorics/formulas/'],
+                            ['Сочетания',               'https://omath.ru/article/combinatorics/combination/'],
+                            ['Перестановки',            'https://omath.ru/article/combinatorics/permutation/'],
+                            ['Размещения',              'https://omath.ru/article/combinatorics/arrangement/'],
+                            ['Факториал',               'https://omath.ru/article/combinatorics/factorial/'],
+                            ['Правило умножения',       'https://omath.ru/article/combinatorics/rules/product/'],
+                            ['Правило сложения',        'https://omath.ru/article/combinatorics/rules/sum/'],
+                            ['Прямой перебор',          'https://omath.ru/article/combinatorics/brute-force/'],
+                            ['Комбинаторика',           'https://omath.ru/article/combinatorics/preface/'],
+                            ['Бином Ньютона',           'https://omath.ru/article/combinatorics/binomial-theorem/'],
                         ];
 
                         function shuffleArray(array) {
@@ -187,7 +187,7 @@ html(lang="ru")
                             container.appendChild(makeTopicElem(topicArr, true));
                         })
 
-                        topics.slice(0, 4).forEach(topicArr => {
+                        topics.slice(0, 6).forEach(topicArr => {
                             container.appendChild(makeTopicElem(topicArr, false));
                         });
 

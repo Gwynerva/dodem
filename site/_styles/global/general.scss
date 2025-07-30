@@ -34,13 +34,13 @@ body
     {
         position: relative;
         z-index: 1;
-     
+
         min-height: 100vh;
-        
+
         display: flex;
         flex-direction: column;
         gap: size.$gapStruct;
-        
+
         > header, > main, > footer { flex-shrink: 0; }
 
         > main
@@ -78,7 +78,7 @@ ul, ol
     border: 1px solid #3d75c1;
     border-radius: 3px;
     box-shadow: 0 1px 3px 1px var(--c_shadow);
-    
+
     color: white;
 
     header
@@ -89,7 +89,7 @@ ul, ol
 
         padding-bottom: 15px;
         margin-bottom: 15px;
-        border-bottom: 1px solid white;
+        border-bottom: 2px solid #ffffff70;
 
         img
         {
@@ -148,7 +148,7 @@ ul, ol
             color: white;
             text-decoration: none;
             border-radius: 3px;
-            background: #58a0f9;
+            background: #63a6f9;
             border: 1px solid transparent;
             font-size: 92%;
 
