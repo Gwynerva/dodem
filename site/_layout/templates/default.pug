@@ -126,31 +126,24 @@ html(lang="ru")
                         .info
                             p <strong>Открытая Математика — преемник Демидовича!</strong>
                             p Понятная теория, конспекты и задачник в одном флаконе!
-                        a.goto(href="https://omath.ru")
+                        a.goto(href="https://ru.omath.net")
                             span Заглянуть
                             img(src="/site/graphics/arrow-right.svg")
                     .topics
 
                     script.
                         let hotTopics = [
-                            ['Рациональные числа',      'https://omath.ru/article/basics/fractions/rational/'],
+                            ['Теорема Виета', 'https://ru.omath.net/article/foundations/equations/quadratic/vietas-formulas/'],
                         ];
 
                         let topics = [
-                            ['Элементарные уравнения',  'https://omath.ru/article/basics/equations/elementary/'],
-                            ['Квадратные уравнения',    'https://omath.ru/article/basics/equations/quadratic/'],
-                            ['Что такое дробь?',        'https://omath.ru/article/basics/fractions/definition/'],
-                            ['Суммы степеней чисел',    'https://omath.ru/article/applications/sum-of-powers/'],
-                            ['Формулы комбинаторики',   'https://omath.ru/article/combinatorics/formulas/'],
-                            ['Сочетания',               'https://omath.ru/article/combinatorics/combination/'],
-                            ['Перестановки',            'https://omath.ru/article/combinatorics/permutation/'],
-                            ['Размещения',              'https://omath.ru/article/combinatorics/arrangement/'],
-                            ['Факториал',               'https://omath.ru/article/combinatorics/factorial/'],
-                            ['Правило умножения',       'https://omath.ru/article/combinatorics/rules/product/'],
-                            ['Правило сложения',        'https://omath.ru/article/combinatorics/rules/sum/'],
-                            ['Прямой перебор',          'https://omath.ru/article/combinatorics/brute-force/'],
-                            ['Комбинаторика',           'https://omath.ru/article/combinatorics/preface/'],
-                            ['Бином Ньютона',           'https://omath.ru/article/combinatorics/binomial-theorem/'],
+                            ['Элементарные уравнения', 'https://ru.omath.net/article/foundations/equations/elementary/'],
+                            ['Нулевые множители', 'https://ru.omath.net/page/foundations/equations/zero-product-property/'],
+                            ['Что такое квадратное уравнение?', 'https://ru.omath.net/article/foundations/equations/quadratic/what-is-it/'],
+                            ['Неполные квадратные уравнения', 'https://ru.omath.net/article/foundations/equations/quadratic/incomplete/'],
+                            ['Выделение полного квадрата', 'https://ru.omath.net/article/foundations/equations/quadratic/completing-the-square/'],
+                            ['Формула корней квадратного уравнения', 'https://ru.omath.net/article/foundations/equations/quadratic/quadratic-formula/'],
+                            ['Разложение квадратного трехчлена на множители', 'https://ru.omath.net/article/foundations/equations/quadratic/factoring/'],
                         ];
 
                         function shuffleArray(array) {
@@ -191,7 +184,7 @@ html(lang="ru")
                             container.appendChild(makeTopicElem(topicArr, false));
                         });
 
-                    a.seeAll(href="https://omath.ru") Посмотреть все темы!
+                    a.seeAll(href="https://ru.omath.net") Посмотреть все темы!
 
                 if (location.hasLocation())
                     include /includes/location
